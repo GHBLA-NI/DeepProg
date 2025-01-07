@@ -1,13 +1,13 @@
-
 # **DeepProg**
 
-DeepProg is a comprehensive framework for analyzing multi-omics cancer data using machine learning and deep learning methods. This repository contains the essential scripts, sample data, and instructions for reproducing results or generating new analyses.
+DeepProg is a powerful computational framework for predicting patient survival using a hybrid ensemble of deep-learning and machine learning models. It integrates multi-omics data, including RNA-Seq, methylation, and miRNA, across 32 cancers from TCGA, outperforming traditional methods like SNF and Cox-PH. Beyond prediction, DeepProg identifies survival-associated subtypes and shared molecular signatures, offering valuable insights for therapeutic and prognostic research. This repository focuses on enhancing predictive performance by incorporating additional omics data from 28 cancer types.
 
 ---
 
 ## **Requirements**
 
 ### **Essential Packages**
+
 To run DeepProg and generate results, you need to install the essential packages listed in `requirements.txt`. These packages are the minimum dependencies required for running the framework.
 
 ```bash
