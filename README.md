@@ -35,6 +35,13 @@ python DeepProgRunner/generate_result.py -D=<cancer_type> -S=<method>
 - `-S` specifies the **method** (omics of your choice).  
   Detailed descriptions of the available methods can be found inside the `generate_result.py` script.
 
+For example:
+```bash
+python DeepProgRunner/generate_result.py -D=ACC -S=1
+```
+
+will return ACC cancer type baseline c-index result.
+
 ---
 
 ## **Sample Data**
