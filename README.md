@@ -25,7 +25,12 @@ pip install -r requirements_full.txt
 
 ## **Generating Results**
 
-To generate results, use the following command:
+
+To generate results, first download data from **TCGA** or use [our sample data](#sample-data), and place it in the directory:
+
+/data/<cancer_type>/
+
+Once the data is prepared, use the following command:
 
 ```bash
 python DeepProgRunner/generate_result.py -D=<cancer_type> -S=<method>
@@ -36,11 +41,17 @@ python DeepProgRunner/generate_result.py -D=<cancer_type> -S=<method>
   Detailed descriptions of the available methods can be found inside the `generate_result.py` script.
 
 For example:
+We downloaded ACC sample data from the google drive, and put it into 
+
+```bash
+/data/ACC/
+```
+
+Then, we ran the following command:
 ```bash
 python DeepProgRunner/generate_result.py -D=ACC -S=1
 ```
-
-will return ACC cancer type baseline c-index result.
+This will return ACC cancer type baseline c-index result.
 
 ---
 
