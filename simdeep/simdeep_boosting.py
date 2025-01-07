@@ -59,7 +59,7 @@ from simdeep.config import MODEL_THRES
 
 from multiprocessing import Pool
 
-from simdeep_only_auto.deepmodel_base import DeepBase
+from simdeep.deepmodel_base import DeepBase
 
 import simplejson
 
