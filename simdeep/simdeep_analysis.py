@@ -6,7 +6,7 @@ from sklearn.cluster import KMeans
 from sklearn.mixture import GaussianMixture
 from sklearn.model_selection import cross_val_score
 
-from simdeep_tau.deepmodel_base import DeepBase
+from simdeep.deepmodel_base import DeepBase
 
 from simdeep.survival_model_utils import ClusterWithSurvival
 
@@ -34,12 +34,12 @@ from simdeep.config import CLASSIFIER
 from simdeep.config import HYPER_PARAMETERS
 from simdeep.config import PATH_TO_SAVE_MODEL
 from simdeep.config import CLUSTERING_OMICS
-from simdeep_tau.config import USE_R_PACKAGES_FOR_SURVIVAL
+from simdeep.config import USE_R_PACKAGES_FOR_SURVIVAL
 
 from simdeep.survival_utils import _process_parallel_coxph
 from simdeep.survival_utils import _process_parallel_cindex
-from simdeep_tau.survival_utils import _process_parallel_feature_importance
-from simdeep_tau.survival_utils import _process_parallel_feature_importance_per_cluster
+from simdeep.survival_utils import _process_parallel_feature_importance
+from simdeep.survival_utils import _process_parallel_feature_importance_per_cluster
 from simdeep.survival_utils import select_best_classif_params
 
 from simdeep.simdeep_utils import metadata_usage_type
@@ -47,9 +47,9 @@ from simdeep.simdeep_utils import feature_selection_usage_type
 
 from simdeep.simdeep_utils import load_labels_file
 
-from simdeep_tau.coxph_from_r import coxph
-from simdeep_tau.coxph_from_r import c_index
-from simdeep_tau.coxph_from_r import c_index_multiple
+from simdeep.coxph_from_r import coxph
+from simdeep.coxph_from_r import c_index
+from simdeep.coxph_from_r import c_index_multiple
 
 from simdeep.coxph_from_r import surv_median
 
