@@ -1,11 +1,11 @@
 import warnings
-from simdeep_tau.simdeep_analysis import SimDeep
-from simdeep_tau.extract_data import LoadData
+from simdeep.simdeep_analysis import SimDeep
+from simdeep.extract_data import LoadData
 
-from simdeep_tau.coxph_from_r import coxph
-from simdeep_tau.coxph_from_r import c_index
-from simdeep_tau.coxph_from_r import c_index_multiple
-from simdeep_tau.coxph_from_r import NALogicalType
+from simdeep.coxph_from_r import coxph
+from simdeep.coxph_from_r import c_index
+from simdeep.coxph_from_r import c_index_multiple
+from simdeep.coxph_from_r import NALogicalType
 
 from sklearn.model_selection import KFold
 # from sklearn.preprocessing import OneHotEncoder
@@ -42,20 +42,20 @@ from simdeep.config import CINDEX_THRESHOLD
 from simdeep.config import USE_AUTOENCODERS
 from simdeep.config import FEATURE_SURV_ANALYSIS
 from simdeep.config import CLUSTERING_OMICS
-from simdeep_tau.config import USE_R_PACKAGES_FOR_SURVIVAL
+from simdeep.config import USE_R_PACKAGES_FOR_SURVIVAL
 
 # Parameter for autoencoder
-from simdeep_only_auto.config import LEVEL_DIMS_IN
-from simdeep_only_auto.config import LEVEL_DIMS_OUT
-from simdeep_only_auto.config import LOSS
-from simdeep_only_auto.config import OPTIMIZER
-from simdeep_only_auto.config import ACT_REG
-from simdeep_only_auto.config import W_REG
-from simdeep_only_auto.config import DROPOUT
-from simdeep_only_auto.config import ACTIVATION
-from simdeep_only_auto.config import PATH_TO_SAVE_MODEL
-from simdeep_only_auto.config import DATA_SPLIT
-from simdeep_only_auto.config import MODEL_THRES
+from simdeep.config import LEVEL_DIMS_IN
+from simdeep.config import LEVEL_DIMS_OUT
+from simdeep.config import LOSS
+from simdeep.config import OPTIMIZER
+from simdeep.config import ACT_REG
+from simdeep.config import W_REG
+from simdeep.config import DROPOUT
+from simdeep.config import ACTIVATION
+from simdeep.config import PATH_TO_SAVE_MODEL
+from simdeep.config import DATA_SPLIT
+from simdeep.config import MODEL_THRES
 
 from multiprocessing import Pool
 
@@ -79,9 +79,9 @@ from numpy import vstack
 
 import pandas as pd
 
-from simdeep_tau.survival_utils import \
+from simdeep.survival_utils import \
     _process_parallel_feature_importance_per_cluster
-from simdeep_tau.survival_utils import \
+from simdeep.survival_utils import \
     _process_parallel_survival_feature_importance_per_cluster
 
 
