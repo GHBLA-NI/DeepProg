@@ -1,8 +1,9 @@
 import sys
 from pathlib import Path
-sys.path.insert(0, '/nfs/dcmb-lgarmire/boweil/DeepProg')
-from simdeep_tau.simdeep_boosting import SimDeepBoosting
-from simdeep_tau.config import PATH_THIS_FILE
+sys.path.append(str(Path(__file__).resolve().parents[1]))
+
+from simdeep.simdeep_boosting import SimDeepBoosting
+from simdeep.config import PATH_THIS_FILE
 from sklearn.preprocessing import RobustScaler
 from collections import OrderedDict
 from os.path import isfile
@@ -12,8 +13,8 @@ import pandas as pd
 import os
 import scipy.stats as st
 import dill
-from simdeep_tau.simdeep_utils import save_model
-from simdeep_tau.simdeep_utils import load_model
+from simdeep.simdeep_utils import save_model
+from simdeep.simdeep_utils import load_model
 # specify your data path
 from argparse import ArgumentParser
 
@@ -35,8 +36,8 @@ args = parser.parse_args()
 selection = args.selection
 dataset = args.dataset
 
-path_data = '/nfs/dcmb-lgarmire/boweil/DeepProg/data/' + dataset +'/'
-parameter_df = pd.read_csv('/nfs/dcmb-lgarmire/boweil/DeepProg/reproduce/hyperparameter.csv', sep = ',')
+path_data = str(Path(__file__).resolve().parent.parent / 'data' / dataset) + '/'
+parameter_df = pd.read_csv(str(Path(__file__).resolve().parent.parent / 'data' / 'hyperparameter.csv'), sep=',')
 
 if selection == "0":
     tsv_files = OrderedDict([
@@ -397,7 +398,7 @@ for idx, SEED in enumerate(seed_list):
         'survival': 'days',
         'event': 'event'}
     
-    output_dir = f'/nfs/dcmb-lgarmire/boweil/DeepProg/data/{dataset}/{PROJECT_NAME}/features'
+    output_dir = str(Path(__file__).resolve().parent.parent / 'result')
     os.makedirs(output_dir, exist_ok=True)  
 
     boosting = SimDeepBoosting(
