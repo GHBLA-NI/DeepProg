@@ -4,13 +4,13 @@ import re
 
 import pandas as pd
 
-from simdeep_drug.config import PATH_DATA
-from simdeep_drug.config import SURVIVAL_FLAG
-from simdeep_drug.config import SEPARATOR
-from simdeep_drug.config import ENTREZ_TO_ENSG_FILE
-from simdeep_drug.config import USE_INPUT_TRANSPOSE
-from simdeep_drug.config import DEFAULTSEP
-from simdeep_drug.config import CLASSIFIER
+from simdeep.config import PATH_DATA
+from simdeep.config import SURVIVAL_FLAG
+from simdeep.config import SEPARATOR
+from simdeep.config import ENTREZ_TO_ENSG_FILE
+from simdeep.config import USE_INPUT_TRANSPOSE
+from simdeep.config import DEFAULTSEP
+from simdeep.config import CLASSIFIER
 
 import  numpy as np
 
@@ -27,8 +27,8 @@ from sklearn.preprocessing import RobustScaler
 
 from collections import defaultdict
 
-from simdeep_tau.coxph_from_r import coxph
-from simdeep_tau.coxph_from_r import c_index
+from simdeep.coxph_from_r import coxph
+from simdeep.coxph_from_r import c_index
 
 from scipy.stats import kruskal
 from scipy.stats import ranksums
