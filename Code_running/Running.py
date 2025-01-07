@@ -39,337 +39,104 @@ dataset = args.dataset
 path_data = str(Path(__file__).resolve().parent.parent / 'data' / dataset) + '/'
 parameter_df = pd.read_csv(str(Path(__file__).resolve().parent.parent / 'data' / 'hyperparameter.csv'), sep=',')
 
-if selection == "0":
-    tsv_files = OrderedDict([
-     ('MIR', 'mir.tsv'),
-     ('METH', 'meth.tsv'),
-     ('RNA', 'rna.tsv')
-    ])
-    PROJECT_NAME = 'single'
-    feature_selection_usage = 'individual'
+
+PROJECT_NAME_BASE = dataset
+PROJECT_NAME_SUFFIX = "" 
+
+
 if selection == "1":
     tsv_files = OrderedDict([
-     ('MIR', 'mir_cnv.tsv'),
-     ('METH', 'meth_cnv.tsv'),
-     ('RNA', 'rna_cnv.tsv')
-    ])
-    PROJECT_NAME = 'single_testingnode'
-    feature_selection_usage = 'individual'
-elif selection == "2":
-    tsv_files = OrderedDict([
-     ('MIR', 'mir_cnv.tsv'),
-     ('METH', 'meth_cnv.tsv'),
-     ('RNA', 'rna_cnv.tsv'), 
-     ("drug","drug.tsv")
-    ])  
-    PROJECT_NAME = 'drug_single'
-    feature_selection_usage = 'individual'
-elif selection == "3":
-    tsv_files = OrderedDict([
-     ('MIR', 'mir_cnv.tsv'),
-     ('METH', 'meth_cnv.tsv'),
-     ('RNA', 'rna_cnv.tsv'), 
-     ("wxs","wxs.tsv")
-    ])   
-    PROJECT_NAME =  'snp_single'
-    feature_selection_usage = 'individual'
-elif selection == "4":
-    tsv_files = OrderedDict([
-     ('MIR', 'mir_cnv.tsv'),
-     ('METH', 'meth_cnv.tsv'),
-     ('RNA', 'rna_cnv.tsv'), 
-     ("percentage", "percentage_scdc.tsv")
-    ])   
-    PROJECT_NAME =  'dec_single'
-    feature_selection_usage = 'individual'
-elif selection == "5":
-    tsv_files = OrderedDict([
-     ('MIR', 'mir_cnv.tsv'),
-     ('METH', 'meth_cnv.tsv'),
-     ('RNA', 'rna_cnv.tsv'), 
-     ("drug","drug.tsv"),
-     ("wxs","wxs.tsv")
-    ])  
-    PROJECT_NAME = 'drug_snp_single'
-    feature_selection_usage = 'individual'
-elif selection == "6":
-    tsv_files = OrderedDict([
-     ('MIR', 'mir_cnv.tsv'),
-     ('METH', 'meth_cnv.tsv'),
-     ('RNA', 'rna_cnv.tsv'), 
-     ("percentage", "percentage_scdc.tsv"),
-     ("drug","drug.tsv"),
-    ])  
-    PROJECT_NAME =  'drug_dec_single'
-    feature_selection_usage = 'individual'
-elif selection == "7":
-    tsv_files = OrderedDict([
-     ('MIR', 'mir_cnv.tsv'),
-     ('METH', 'meth_cnv.tsv'),
-     ('RNA', 'rna_cnv.tsv'), 
-     ("percentage", "percentage_scdc.tsv"),
-     ("drug","drug.tsv"),
-    ("wxs","wxs.tsv")
-    ])  
-    PROJECT_NAME =  'once_drug_snp_dec_single'
-    feature_selection_usage = 'individual'
-elif selection == "15":
-    tsv_files = OrderedDict([
-     ('MIR', 'mir_cnv.tsv'),
-     ('METH', 'meth_cnv.tsv'),
-     ('RNA', 'rna_cnv.tsv'), 
-     ("cnv","cnv.tsv")
-    ])  
-    PROJECT_NAME = 'cnv_single'
-    feature_selection_usage = 'individual'
-elif selection == "16":
-    tsv_files = OrderedDict([
-     ('MIR', 'mir_cnv.tsv'),
-     ('METH', 'meth_cnv.tsv'),
-     ('RNA', 'rna_cnv.tsv'), 
-     ("cnv","cnv.tsv"),
-     ("drug","drug.tsv")
-    ])  
-    PROJECT_NAME = 'drug_cnv_single'
-    feature_selection_usage = 'individual'
-elif selection == "17":
-    tsv_files = OrderedDict([
      ('MIR', 'mir.tsv'),
-     ('METH', 'meth.tsv'),
-     ('RNA', 'rna.tsv'), 
-     ("percentage", "percentage_scdc.tsv"),
-     ("drug","drug.tsv"),
-     ("cnv","cnv.tsv")
-    ])  
-    PROJECT_NAME =  'drug_dec_cnv_single'
-    feature_selection_usage = 'individual'
-elif selection == "18":
-    tsv_files = OrderedDict([
      ('METH', 'meth.tsv'),
      ('RNA', 'rna.tsv')
-    ])  
-    PROJECT_NAME =  'single'
+    ])
+    PROJECT_NAME_SUFFIX = 'baseline'
     feature_selection_usage = 'individual'
-elif selection == "20":
+
+elif selection == "2":
     tsv_files = OrderedDict([
-     ('METH', 'meth_cnv.tsv'),
-     ('RNA', 'rna_cnv.tsv'),
-     ("mir","mir_cnv.tsv"),
-     ("clinical","clinical_common_final.tsv")
-    ])  
-    PROJECT_NAME =  'clinical_single'
-    feature_selection_usage = 'individual'
-elif selection == "21":
-    tsv_files = OrderedDict([
-     ('METH', 'meth_cnv.tsv'),
-     ('RNA', 'rna_cnv.tsv'),
-     ("mir","mir_cnv.tsv"),
-     ("clinical","clinical_common_final.tsv")
-    ])  
-    PROJECT_NAME =  'clinical_common_single'
-    feature_selection_usage = 'individual'
-elif selection == "22":
-    tsv_files = OrderedDict([
-     ('METH', 'meth_cnv.tsv'),
-     ('RNA', 'rna_cnv.tsv'),
-     ("mir","mir_cnv.tsv"),
-     ("clinical","clinical_try.tsv"),
-     ("percentage", "percentage_scdc.tsv"),
-     ("drug","drug.tsv"),
-     ("wxs","wxs.tsv")
-    ])  
-    PROJECT_NAME =  'drug_snp_dec_clinical_single'
-    feature_selection_usage = 'individual'
-elif selection == "23":
-    tsv_files = OrderedDict([
-     ("clinical","clinical_common_final.tsv")
-    ])  
-    PROJECT_NAME =  'clinical_pure'
-    feature_selection_usage = 'individual'
-elif selection == "24":
-    tsv_files = OrderedDict([
-     ('METH', 'meth_cnv.tsv'),
-     ('RNA', 'rna_cnv.tsv'),
-     ("mir","mir_cnv.tsv"),
-     ("clinical","clinical_try_all.tsv"),
-     ("percentage", "percentage_scdc.tsv"),
-     ("drug","drug.tsv"),
-     ("wxs","wxs.tsv")
-    ])  
-    PROJECT_NAME =  'drug_snp_dec_clinical_single_all'
-    feature_selection_usage = 'individual'
-elif selection == "25":
-    tsv_files = OrderedDict([
-     ('METH', 'meth_cnv.tsv'),
-     ('RNA', 'rna_cnv.tsv'),
-     ("mir","mir_cnv.tsv"),
-     ("clinical","clinical_common_final.tsv"),
-     ("percentage", "percentage_scdc.tsv"),
-     ("drug","drug.tsv"),
-     ("wxs","wxs.tsv")
-    ])  
-    PROJECT_NAME =  'drug_snp_dec_clinical_single_common'
-    feature_selection_usage = 'individual'
-elif selection == "26":
-    tsv_files = OrderedDict([
+     ('MIR', 'mir.tsv'),
      ('METH', 'meth.tsv'),
-     ('RNA', 'rna.tsv'),
-     ("mir","mir.tsv"),
-     ("clinical","clinical_common_final.tsv"),
-     ("percentage", "percentage_scdc.tsv"),
+     ('RNA', 'rna.tsv'), 
+     ("drug","drug.tsv")
+    ])  
+    PROJECT_NAME_SUFFIX = 'Drug'
+    feature_selection_usage = 'individual'
+  
+elif selection == "3":
+    tsv_files = OrderedDict([
+     ('MIR', 'mir.tsv'),
+     ('METH', 'meth.tsv'),
+     ('RNA', 'rna.tsv'), 
+     ("wxs","wxs.tsv")
+    ])   
+    PROJECT_NAME_SUFFIX =  'SNP'
+    feature_selection_usage = 'individual'  
+
+elif selection == "4":
+    tsv_files = OrderedDict([
+     ('MIR', 'mir.tsv'),
+     ('METH', 'meth.tsv'),
+     ('RNA', 'rna.tsv'), 
+     ("cnv","cnv.tsv")
+    ])  
+    PROJECT_NAME_SUFFIX = 'CNV'
+    feature_selection_usage = 'individual'
+  
+elif selection == "5":
+    tsv_files = OrderedDict([
+     ('MIR', 'mir.tsv'),
+     ('METH', 'meth.tsv'),
+     ('RNA', 'rna.tsv'), 
      ("drug","drug.tsv"),
      ("wxs","wxs.tsv")
     ])  
-    PROJECT_NAME =  'drug_snp_dec_clinical_single_common'
+    PROJECT_NAME_SUFFIX = 'Drug_SNP'
     feature_selection_usage = 'individual'
-elif selection == "27":
+
+elif selection == "6":
+    tsv_files = OrderedDict([
+     ('MIR', 'mir.tsv'),
+     ('METH', 'meth.tsv'),
+     ('RNA', 'rna.tsv'), 
+     ("cnv","cnv.tsv"),
+     ("drug","drug.tsv")
+    ])  
+    PROJECT_NAME_SUFFIX = 'Drug_CNV'
+    feature_selection_usage = 'individual'
+  
+elif selection == "7":
     tsv_files = OrderedDict([
      ('METH', 'meth.tsv'),
      ('RNA', 'rna.tsv'),
      ("mir","mir.tsv"),
      ("clinical","clinical_common_final.tsv")
     ])  
-    PROJECT_NAME =  'clinical_single'
+    PROJECT_NAME_SUFFIX =  'clinical_baseline'
     feature_selection_usage = 'individual'
-elif selection == "28":
+
+elif selection == "8":
     tsv_files = OrderedDict([
-     ('MIR', 'mir_cnv.tsv'),
-     ('METH', 'meth_cnv.tsv'),
-     ('RNA', 'rna_cnv.tsv'), 
-     ("cnv","cnv.tsv"),
-     ("drug","drug.tsv"),
-     ("percentage", "percentage_scdc.tsv")
+     ("clinical","clinical_common_final.tsv")
     ])  
-    PROJECT_NAME = 'drug_cnv_dec_single'
+    PROJECT_NAME_SUFFIX =  'clinical'
     feature_selection_usage = 'individual'
-elif selection == "29":
+  
+elif selection == "9":
     tsv_files = OrderedDict([
-     ('MIR', 'mir_cnv.tsv'),
-     ('METH', 'meth_cnv.tsv'),
-     ('RNA', 'rna_cnv.tsv'), 
+     ('MIR', 'mir.tsv'),
+     ('METH', 'meth.tsv'),
+     ('RNA', 'rna.tsv'), 
      ("cnv","cnv.tsv"),
      ("drug","drug.tsv"),
      ("wxs","wxs.tsv")
     ])  
-    PROJECT_NAME = 'drug_cnv_snp_single'
+    PROJECT_NAME_SUFFIX = 'Drug_CNV_SNP'
     feature_selection_usage = 'individual'
-elif selection == "30":
-    tsv_files = OrderedDict([
-     ('MIR', 'mir.tsv'),
-     ('METH', 'meth.tsv'),
-     ('RNA', 'rna.tsv'), 
-     ("drug","drug.tsv"),
-    ])  
-    PROJECT_NAME = 'drug_single'
-    feature_selection_usage = 'individual'
-elif selection == "31":
-    tsv_files = OrderedDict([
-     ('METH', 'meth.tsv'),
-     ('RNA', 'rna.tsv'), 
-     ("drug","drug.tsv"),
-    ])  
-    PROJECT_NAME = 'drug_single'
-    feature_selection_usage = 'individual'
-elif selection == "32":
-    tsv_files = OrderedDict([
-     ('MIR', 'mir.tsv'),
-     ('METH', 'meth.tsv'),
-     ('RNA', 'rna.tsv'), 
-     ("percentage", "percentage_scdc.tsv"),
-     ("drug","drug.tsv"),
-    ("wxs","wxs.tsv")
-    ])  
-    PROJECT_NAME =  'once_drug_snp_dec_single'
-    feature_selection_usage = 'individual'
-elif selection == "33":
-    tsv_files = OrderedDict([
-     ('METH', 'meth_cnv.tsv'),
-     ('RNA', 'rna_cnv.tsv'), 
-     ("percentage", "percentage_scdc.tsv"),
-     ("drug","drug.tsv"),
-    ("wxs","wxs.tsv")
-    ])  
-    PROJECT_NAME =  'once_drug_snp_dec_single'
-    feature_selection_usage = 'individual'
-elif selection == "34":
-    tsv_files = OrderedDict([
-     ('MIR', 'mir_cnv.tsv'),
-     ('METH', 'meth_cnv.tsv'),
-     ('RNA', 'rna_cnv.tsv'), 
-     ("cnv","cnv.tsv"),
-     ("drug","drug_modified.tsv"),
-    ("wxs","wxs.tsv")
-    ])  
-    PROJECT_NAME =  'once_drug_cnv_snp_single_drug_test'
-    feature_selection_usage = 'individual'
-elif selection == "35":
-    tsv_files = OrderedDict([
-     ('MIR', 'mir.tsv'),
-     ('METH', 'meth.tsv'),
-     ('RNA', 'rna.tsv'), 
-     ("cnv","cnv.tsv"),
-     ("drug","drug_modified.tsv"),
-    ("wxs","wxs.tsv")
-    ])  
-    PROJECT_NAME =  'once_drug_cnv_snp_single_drug_test'
-    feature_selection_usage = 'individual'
-elif selection == "36":
-    tsv_files = OrderedDict([
-     ('METH', 'meth_cnv.tsv'),
-     ('RNA', 'rna_cnv.tsv'), 
-     ("cnv","cnv.tsv"),
-     ("drug","drug_modified.tsv"),
-    ("wxs","wxs.tsv")
-    ])  
-    PROJECT_NAME =  'once_drug_cnv_snp_single_drug_test'
-    feature_selection_usage = 'individual'
-elif selection == "37":
-    tsv_files = OrderedDict([
-     ('METH', 'meth_cnv.tsv'),
-     ('MIR', 'mir_cnv.tsv'),
-     ('RNA', 'rna_cnv.tsv'), 
-     ("cnv","cnv.tsv"),
-    ("wxs","wxs.tsv")
-    ])  
-    PROJECT_NAME =  'once_drug_cnv_snp_single_drug_ANOVA'
-    feature_selection_usage = 'individual'
-elif selection == "38":
-    tsv_files = OrderedDict([
-     ('METH', 'meth_cnv.tsv'),
-     ('MIR', 'mir_cnv.tsv'),
-     ('RNA', 'rna_cnv.tsv'), 
-     ("drug","drug_modified.tsv"),
-     ("cnv","cnv.tsv"),
-    ("wxs","wxs.tsv")
-    ])  
-    PROJECT_NAME =  'once_drug_cnv_snp_single_drug_TAU_cindextest'
-    feature_selection_usage = 'individual'
-elif selection == "39":
-    tsv_files = OrderedDict([
-     ('METH', 'meth_cnv.tsv'),
-     ('MIR', 'mir_cnv.tsv'),
-     ('RNA', 'rna_cnv.tsv'), 
-     ("drug","drug_modified.tsv")
-    ])  
-    PROJECT_NAME =  'drug_single_TAU'
-    feature_selection_usage = 'individual'
-elif selection == "40":
-    tsv_files = OrderedDict([
-     ('METH', 'meth_cnv.tsv'),
-     ('RNA', 'rna_cnv.tsv'), 
-     ("drug","drug_modified.tsv")
-    ])  
-    PROJECT_NAME =  'drug_single_TAU'
-    feature_selection_usage = 'individual'
-elif selection == "41":
-    tsv_files = OrderedDict([
-     ('METH', 'meth.tsv'),
-     ('MIR', 'mir.tsv'),
-     ('RNA', 'rna.tsv'), 
-     ("drug","drug_modified.tsv")
-    ])  
-    PROJECT_NAME =  'drug_single_TAU'
-    feature_selection_usage = 'individual'
+  
+PROJECT_NAME = f"{PROJECT_NAME_BASE}_{PROJECT_NAME_SUFFIX}"   
+
+
 # The survival file located also in the same folder
 survival_tsv = 'survival.tsv'
 
