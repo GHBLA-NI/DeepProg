@@ -82,7 +82,7 @@ The scripts used to generate these plots are also available in the same folder, 
 
 ## **More Information**
 
-For more details on DeepProg itself, including how it works and the underlying methodology, please refer to the official **DeepProg GitHub repository**:  
+For more details on more advanced use or installation of DeepProg, you can find them in:  **DeepProg GitHub repository**:  
 **[DeepProg Repository](https://github.com/lanagarmire/DeepProg/tree/master)**
 
 ---
