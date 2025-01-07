@@ -19,7 +19,7 @@ from simdeep.config import NORMALIZATION
 
 from simdeep.config import FILL_UNKOWN_FEATURE_WITH_0
 
-from simdeep_tau.config import CROSS_VALIDATION_INSTANCE
+from simdeep.config import CROSS_VALIDATION_INSTANCE
 
 from simdeep.config import TEST_FOLD
 
